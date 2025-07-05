@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 
-# --------- Chargement des données ---------
+
 def load_data():
     iris = load_iris()
     df = pd.DataFrame(iris.data, columns=iris.feature_names)
@@ -12,16 +12,14 @@ def load_data():
 
 df, target_names = load_data()
 
-# --------- Entraînement du modèle ---------
 model = RandomForestClassifier()
 model.fit(df.iloc[:, :-1], df['species'])
 
-# --------- Personnalisation de la page ---------
+
 st.set_page_config(page_title="Iris Flower Classifier ", layout="centered")
 st.title("🌸 Iris Flower Classification")
 st.markdown("Utilisez les curseurs dans la **barre latérale** pour prédire l'espèce d'une fleur d'Iris.")
 
-# --------- Interface utilisateur (sidebar) ---------
 st.sidebar.header(" Paramètres d'entrée")
 
 sepal_length = st.sidebar.slider(
@@ -52,12 +50,10 @@ petal_width = st.sidebar.slider(
     float(df['petal width (cm)'].mean())
 )
 
-# --------- Prédiction ---------
 input_data = [sepal_length, sepal_width, petal_length, petal_width]
 prediction = model.predict([input_data])
 predicted_species = target_names[prediction[0]]
 
-# --------- Affichage des résultats ---------
 st.subheader("Caractéristiques fournies")
 features_df = pd.DataFrame(
     {
@@ -75,7 +71,7 @@ st.table(features_df)
 st.subheader(" Résultat de la prédiction")
 st.success(f" Espèce prédite : **{predicted_species.capitalize()}**")
 
-# --------- Footer ---------
+
 st.markdown("---")
 st.markdown(
     "<small>Démo d'une application Streamlit - Classification avec Random Forest 🌲</small>",
