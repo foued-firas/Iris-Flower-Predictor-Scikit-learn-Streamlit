@@ -1,10 +1,3 @@
-ipykernel
-numpy 
-seaborn
 pandas
-matplotlib
 streamlit
 scikit-learn
-memory_profiler
-bs4
-flask
