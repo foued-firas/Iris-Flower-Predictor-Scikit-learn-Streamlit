@@ -17,12 +17,12 @@ model = RandomForestClassifier()
 model.fit(df.iloc[:, :-1], df['species'])
 
 # --------- Personnalisation de la page ---------
-st.set_page_config(page_title="Iris Flower Classifier 🌸", layout="centered")
+st.set_page_config(page_title="Iris Flower Classifier ", layout="centered")
 st.title("🌸 Iris Flower Classification")
 st.markdown("Utilisez les curseurs dans la **barre latérale** pour prédire l'espèce d'une fleur d'Iris.")
 
 # --------- Interface utilisateur (sidebar) ---------
-st.sidebar.header("📥 Paramètres d'entrée")
+st.sidebar.header(" Paramètres d'entrée")
 
 sepal_length = st.sidebar.slider(
     "Longueur du sépale (cm)", 
@@ -58,7 +58,7 @@ prediction = model.predict([input_data])
 predicted_species = target_names[prediction[0]]
 
 # --------- Affichage des résultats ---------
-st.subheader("📊 Caractéristiques fournies")
+st.subheader("Caractéristiques fournies")
 features_df = pd.DataFrame(
     {
         "Mesure": [
@@ -72,8 +72,8 @@ features_df = pd.DataFrame(
 )
 st.table(features_df)
 
-st.subheader("🔍 Résultat de la prédiction")
-st.success(f"✅ Espèce prédite : **{predicted_species.capitalize()}**")
+st.subheader(" Résultat de la prédiction")
+st.success(f" Espèce prédite : **{predicted_species.capitalize()}**")
 
 # --------- Footer ---------
 st.markdown("---")
